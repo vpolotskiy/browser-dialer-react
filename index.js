@@ -35,12 +35,12 @@ app.get('/token', (request, response) => {
 // Create TwiML for outbound calls
 app.post('/voice', (request, response) => {
   let voiceResponse = new VoiceResponse();
-  console.log('request.body.number', request.body);
+  console.log('request.body', request.body);
   const dial = voiceResponse.dial({
     callerId: process.env.TWILIO_NUMBER,
   });
 
-  dial.number(request.body.number);
+  dial.number(request.body.To);
 
   response.type('text/xml');
   response.send(voiceResponse.toString());
