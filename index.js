@@ -40,7 +40,7 @@ app.post('/voice', (request, response) => {
     callerId: process.env.TWILIO_NUMBER,
   });
 
-  dial.number(request.body.To);
+  dial.number(request.body.number);
 
   response.type('text/xml');
   response.send(voiceResponse.toString());
